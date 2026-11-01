@@ -5,15 +5,15 @@ const getRandom = (min, max) => {
 }
 
 const takeDice = (dice) => {
-  const pattern = /^\d{1,2}d\d{1,2}$/gi;
+  const pattern = /^d(4|6|8|10|12|16|20)$/gi;
 
   if (!dice.match(pattern)) {
     throw new Error('wrong dice');
   }
 
-  const [min, max] = dice.split('d');
+  const max = dice.slice(1);
 
-  return getRandom(Number(min), Number(max));
+  return getRandom(1, Number(max));
 }
 
-console.log(takeDice('1d20'));
+console.log(takeDice('d4'));
